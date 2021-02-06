@@ -78,6 +78,7 @@ namespace NavrhoveVzory.ViewModels
         {
 
             PeopleItems = new List<string>();
+            DatumNarozeni = DateTime.Now;
             if (DBPeople.PeopleDatabase.dbPeople.Count == 0)
             {
                 Jmeno = "";
@@ -108,6 +109,10 @@ namespace NavrhoveVzory.ViewModels
                             People people = new People(Jmeno, Prijmeni, DatumNarozeni, RodneCislo);
                             DBPeople.PeopleDatabase.dbPeople.Add(RodneCislo, people);
                             PeopleItems.Add(Jmeno + " " + Prijmeni + " - " + RodneCislo);
+                            Jmeno = "";
+                            Prijmeni = "";
+                            RodneCislo = "";
+                            DatumNarozeni = DateTime.Now;
                         });
                 }
                 return _sendCommand;
