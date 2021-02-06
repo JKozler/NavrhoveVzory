@@ -103,12 +103,14 @@ namespace NavrhoveVzory.ViewModels
 
                             // Uložení do modelu
                             PeopleItems = new List<string>();
+                            List<string> items = new List<string>();
                             People people = new People(Jmeno, Prijmeni, DatumNarozeni, RodneCislo);
                             DBPeople.PeopleDatabase.dbPeople.Add(RodneCislo, people);
                             foreach (var item in DBPeople.PeopleDatabase.dbPeople)
                             {
-                                PeopleItems.Add(item.Value.Jmeno + " " + item.Value.Prijmeni + " - " + item.Value.RodneCislo);
+                                items.Add(item.Value.Jmeno + " " + item.Value.Prijmeni + " - " + item.Value.RodneCislo);
                             }
+                            PeopleItems = items;
                             Jmeno = "";
                             Prijmeni = "";
                             RodneCislo = "";
