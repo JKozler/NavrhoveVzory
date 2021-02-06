@@ -1,0 +1,13 @@
+﻿<Window x:Class="NavrhoveVzory.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:NavrhoveVzory"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="90" Width="400">
+    <Border>
+        <Button Content="Open window" x:Name="open" Click="open_Click" Background="#FFA8FF51"></Button>
+    </Border>
+</Window>
