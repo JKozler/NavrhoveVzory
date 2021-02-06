@@ -17,8 +17,6 @@ namespace NavrhoveVzory.Models
 
         public static DBPeople PeopleDatabase
         {
-            // Lazy model - až někdo bude potřebovat databázi zpráv,
-            // tak se vytvoří, ale ne dřív!
             get
             {
                 if (instance == null)
