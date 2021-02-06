@@ -76,8 +76,6 @@ namespace NavrhoveVzory.ViewModels
 
         public PeopleViewModel()
         {
-
-            PeopleItems = new List<string>();
             DatumNarozeni = DateTime.Now;
             if (DBPeople.PeopleDatabase.dbPeople.Count == 0)
             {
@@ -92,23 +90,25 @@ namespace NavrhoveVzory.ViewModels
 
         private static ICommand _sendCommand;
 
-        // SendCommand je bindovaný z GUI
         public ICommand SendCommand
         {
             get
             {
                 if (_sendCommand == null)
                 {
-                    // RelayCommand je definovaný v MVVMLight
                     _sendCommand = new RelayCommand(
                         () => {
                             // Tady je práce, která se má odmakat, když se spustí command
                             Debug.WriteLine(Jmeno);
 
                             // Uložení do modelu
+                            PeopleItems = new List<string>();
                             People people = new People(Jmeno, Prijmeni, DatumNarozeni, RodneCislo);
                             DBPeople.PeopleDatabase.dbPeople.Add(RodneCislo, people);
-                            PeopleItems.Add(Jmeno + " " + Prijmeni + " - " + RodneCislo);
+                            foreach (var item in DBPeople.PeopleDatabase.dbPeople)
+                            {
+                                PeopleItems.Add(item.Value.Jmeno + " " + item.Value.Prijmeni + " - " + item.Value.RodneCislo);
+                            }
                             Jmeno = "";
                             Prijmeni = "";
                             RodneCislo = "";
